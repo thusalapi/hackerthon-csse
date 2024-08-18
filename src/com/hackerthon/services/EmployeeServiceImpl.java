@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 
-public class EmployeeServiceImpl extends ConfigurationLoader implements EmployeeService {
+public class EmployeeServiceImpl extends EmployeeService {
 
     private final ArrayList<Employee> employees = new ArrayList<>();
     private static Connection connection;

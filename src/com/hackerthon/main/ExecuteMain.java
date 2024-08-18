@@ -1,6 +1,8 @@
 package com.hackerthon.main;
 
 import com.hackerthon.common.XmlTransformer;
+import com.hackerthon.services.EmployeeService;
+import com.hackerthon.services.EmployeeServiceImpl;
 
 public class ExecuteMain {
 
@@ -9,7 +11,7 @@ public class ExecuteMain {
      */
     public static void main(String[] args) {
 
-        EmployeeServiceTemplate employeeService = new EmployeeServiceTemplate();
+        EmployeeService employeeService = new EmployeeServiceImpl();
         try {
             XmlTransformer.requestTransform();
             employeeService.manageEmployees();
