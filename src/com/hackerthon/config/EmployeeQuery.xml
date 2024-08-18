@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    This XML file contains SQL queries used for managing the employees table.
+-->
+<queries>
+    <query id="q1">
+        <![CDATA[
+            CREATE TABLE employees (
+                EmployeeID varchar(10) NOT NULL,
+                Fullname varchar(25),
+                Address varchar(50),
+                Faculty varchar(20),
+                Department varchar(25),
+                Designation varchar(20),
+                PRIMARY KEY (EmployeeID)
+            )
+        ]]>
+    </query>
+    <query id="q2">
+        <![CDATA[
+            DROP TABLE IF EXISTS employees
+        ]]>
+    </query>
+    <query id="q3">
+        <![CDATA[
+            INSERT INTO employees (EmployeeID, Fullname, Address, Faculty, Department, Designation)
+            VALUES (?, ?, ?, ?, ?, ?)
+        ]]>
+    </query>
+    <query id="q4">
+        <![CDATA[
+            SELECT * FROM employees WHERE employees.EmployeeID = ?
+        ]]>
+    </query>
+    <query id="q5">
+        <![CDATA[
+            SELECT * FROM employees
+        ]]>
+    </query>
+    <query id="q6">
+        <![CDATA[
+            DELETE FROM employees WHERE employees.EmployeeID = ?
+        ]]>
+    </query>
+</queries>
