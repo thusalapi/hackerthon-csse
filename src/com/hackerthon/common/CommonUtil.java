@@ -8,14 +8,14 @@ import java.util.Properties;
 /**
  * Class responsible for loading configuration properties.
  */
-public class ConfigurationLoader {
+public class CommonUtil {
 
-    private static final Logger LOGGER = Logger.getLogger(ConfigurationLoader.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(CommonUtil.class.getName());
     public static final Properties configProperties = new Properties();
 
     static {
         try {
-            configProperties.load(ConfigurationLoader.class.getResourceAsStream(CommonConstants.CONFIG_FILE_PATH));
+            configProperties.load(CommonUtil.class.getResourceAsStream(CommonConstants.CONFIG_FILE_PATH));
         } catch (IOException e) {
             LOGGER.log(Level.SEVERE, "Failed to load configuration properties", e);
         }

@@ -18,7 +18,7 @@ import javax.xml.transform.Source;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
-import javax.xml.transform.TransformerFactoryConfigurationError;
+
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 import javax.xml.transform.TransformerFactory;
@@ -30,15 +30,15 @@ import java.util.logging.Logger;
 /**
  * Class responsible for transforming XML and extracting data using XPath.
  */
-public class XmlTransformer extends ConfigurationLoader {
+public class XSLTransformUtil extends CommonUtil {
 
-    private static final Logger LOGGER = Logger.getLogger(XmlTransformer.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(XSLTransformUtil.class.getName());
     private static final ArrayList<Map<String, String>> employeeDataList = new ArrayList<>();
     public static Properties properties = new Properties();
 
     static {
         try {
-            properties.load(XmlTransformer.class.getResourceAsStream(CommonConstants.CONFIGURE_PROPERTIES_PATH));
+            properties.load(XSLTransformUtil.class.getResourceAsStream(CommonConstants.CONFIGURE_PROPERTIES_PATH));
         } catch (IOException e) {
             LOGGER.log(Level.SEVERE, "Error loading properties file", e);
             throw new RuntimeException(e);

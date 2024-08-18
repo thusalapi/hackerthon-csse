@@ -2,13 +2,10 @@ package com.hackerthon.common;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.util.Properties;
 
-import com.hackerthon.common.ConfigurationLoader;
+import static com.hackerthon.common.XSLTransformUtil.properties;
 
-import static com.hackerthon.common.XmlTransformer.properties;
-
-public class DBConnectionUtil extends ConfigurationLoader {
+public class DBConnectionUtil extends CommonUtil {
 
     private static DBConnectionUtil instance;
     private Connection connection;

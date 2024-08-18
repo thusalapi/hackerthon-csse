@@ -1,11 +1,10 @@
 package com.hackerthon.services;
 
 import com.hackerthon.common.CommonConstants;
-import com.hackerthon.common.XmlTransformer;
+import com.hackerthon.common.XSLTransformUtil;
 
-import com.hackerthon.common.ConfigurationLoader;
 import com.hackerthon.common.DBConnectionUtil;
-import com.hackerthon.common.QueryLoader;
+import com.hackerthon.common.QueryUtil;
 import com.hackerthon.model.Employee;
 
 import java.sql.Connection;
@@ -30,7 +29,7 @@ public class EmployeeServiceImpl extends EmployeeService {
     @Override
        public void loadEmployeesFromXml() {
         try {
-            for (Map<String, String> data : XmlTransformer.extractXmlData()) {
+            for (Map<String, String> data : XSLTransformUtil.extractXmlData()) {
                 Employee employee = new Employee();
                 employee.setEmployeeId(data.get(CommonConstants.XPATH_EMPLOYEE_ID_KEY));
                 employee.setFullName(data.get(CommonConstants.XPATH_EMPLOYEE_NAME_KEY));
@@ -50,8 +49,8 @@ public class EmployeeServiceImpl extends EmployeeService {
     public void createEmployeeTable() {
         try {
             statement = connection.createStatement();
-            statement.executeUpdate(QueryLoader.getQueryById("q2"));
-            statement.executeUpdate(QueryLoader.getQueryById("q1"));
+            statement.executeUpdate(QueryUtil.getQueryById("q2"));
+            statement.executeUpdate(QueryUtil.getQueryById("q1"));
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -60,7 +59,7 @@ public class EmployeeServiceImpl extends EmployeeService {
     @Override
     public void saveEmployees() {
         try {
-            preparedStatement = connection.prepareStatement(QueryLoader.getQueryById("q3"));
+            preparedStatement = connection.prepareStatement(QueryUtil.getQueryById("q3"));
             connection.setAutoCommit(false);
             for (Employee employee : employees) {
                 preparedStatement.setString(1, employee.getEmployeeId());
@@ -82,7 +81,7 @@ public class EmployeeServiceImpl extends EmployeeService {
     public void getEmployeeById(String employeeId) {
         Employee employee = new Employee();
         try {
-            preparedStatement = connection.prepareStatement(QueryLoader.getQueryById("q4"));
+            preparedStatement = connection.prepareStatement(QueryUtil.getQueryById("q4"));
             preparedStatement.setString(1, employeeId);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
@@ -104,7 +103,7 @@ public class EmployeeServiceImpl extends EmployeeService {
     @Override
     public void deleteEmployee(String employeeId) {
         try {
-            preparedStatement = connection.prepareStatement(QueryLoader.getQueryById("q6"));
+            preparedStatement = connection.prepareStatement(QueryUtil.getQueryById("q6"));
             preparedStatement.setString(1, employeeId);
             preparedStatement.executeUpdate();
         } catch (Exception e) {
@@ -116,7 +115,7 @@ public class EmployeeServiceImpl extends EmployeeService {
     public void displayAllEmployees() {
         ArrayList<Employee> employeeList = new ArrayList<>();
         try {
-            preparedStatement = connection.prepareStatement(QueryLoader.getQueryById("q5"));
+            preparedStatement = connection.prepareStatement(QueryUtil.getQueryById("q5"));
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 Employee employee = new Employee();

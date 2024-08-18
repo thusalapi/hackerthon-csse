@@ -10,14 +10,14 @@ import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import static com.hackerthon.common.XmlTransformer.properties;
+import static com.hackerthon.common.XSLTransformUtil.properties;
 
 /**
  * Class responsible for loading and parsing XML queries.
  */
-public class QueryLoader extends ConfigurationLoader {
+public class QueryUtil extends CommonUtil {
 
-    private static final Logger LOGGER = Logger.getLogger(QueryLoader.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(QueryUtil.class.getName());
 
     /**
      * Loads and parses the EmployeeQuery.xml file.
