@@ -26,4 +26,6 @@ public class CommonConstants {
     public static final String DEPARTMENT = "department";
     public static final String DESIGNATION = "designation";
 
+    public static final String Employee_QueryXml_Path = "employeeQueryXmlPath";
+
 }
