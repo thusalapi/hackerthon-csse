@@ -4,6 +4,7 @@ import com.hackerthon.common.CommonConstants;
 import com.hackerthon.common.XmlTransformer;
 
 import com.hackerthon.common.ConfigurationLoader;
+import com.hackerthon.common.DBConnectionUtil;
 import com.hackerthon.common.QueryLoader;
 import com.hackerthon.model.Employee;
 
@@ -15,7 +16,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Map;
 
-
 public class EmployeeServiceImpl extends EmployeeService {
 
     private final ArrayList<Employee> employees = new ArrayList<>();
@@ -24,7 +24,7 @@ public class EmployeeServiceImpl extends EmployeeService {
     private PreparedStatement preparedStatement;
 
     public EmployeeServiceImpl() {
-        connection = DBConnectUtil.getInstance().getConnection();
+        connection = DBConnectionUtil.getInstance().getConnection();
     }
 
     @Override
